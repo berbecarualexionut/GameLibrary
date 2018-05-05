@@ -6,6 +6,7 @@
 package gamelibrary;
 
 import java.io.*;
+import java.sql.*;
 
 /**
  *
@@ -21,8 +22,10 @@ public class Update {
     }
     
     
-    public static void main(String[] args){
-        
+    public static void main(String[] args) throws SQLException{
+        Connection c1=DriverManager.getConnection("jdbc:mtsql://localhost:3306/Alex");
+        Statement s=c1.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        ResultSet rs=s.executeQuery("SELECT * FROM library");
     } 
     
 }
