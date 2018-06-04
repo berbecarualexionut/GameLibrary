@@ -22,10 +22,29 @@ public class Update {
     }
     
     
-    public static void main(String[] args) throws SQLException{
-        Connection c1=DriverManager.getConnection("jdbc:mtsql://localhost:3306/Alex");
-        Statement s=c1.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
-        ResultSet rs=s.executeQuery("SELECT * FROM library");
+    public static Connection getConnection() throws Exception {
+        try{
+            String driver="com.mysql.jdbc.Driver";
+            Class.forName(driver);
+           
+            Connection conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lib?useSSL=true","root",""); //password to be completed
+            System.out.println("Connected");
+            return conn;
+            
+            
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+        return null;
+        
+    }
+    
+    
+    public static void main(String[] args) throws Exception{
+       
+        getConnection();
     } 
     
 }
