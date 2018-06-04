@@ -7,6 +7,10 @@ package gamelibrary;
 
 import java.io.*;
 import java.sql.*;
+import javax.activation.*;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
  *
@@ -22,6 +26,7 @@ public class Update {
     }
     
     
+<<<<<<< HEAD
     public static Connection getConnection() throws Exception {
         try{
             String driver="com.mysql.jdbc.Driver";
@@ -45,6 +50,18 @@ public class Update {
     public static void main(String[] args) throws Exception{
        
         getConnection();
+=======
+    public static void main(String[] args) throws SQLException, NamingException{
+       Context context = new InitialContext();
+        DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/myDB");
+        Connection c1;
+        c1 = dataSource.getConnection("jdbc:mtsql://localhost:3306/mydata");
+        //Statement s=c1.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        //ResultSet rs=s.executeQuery("SELECT * FROM library");
+        Statement s1=c1.createStatement();
+        ResultSet rs=s1.executeQuery("SELECT * FROM Test");
+        System.out.println(rs);
+>>>>>>> e2a643986f2bce622a455ed7bed087ad370c93a2
     } 
     
 }
