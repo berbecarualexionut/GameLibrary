@@ -59,9 +59,10 @@ public class GUI extends JFrame {
     textbox=new JTextField(10);
     String[] comb={"PC","PS2","PS3","PS4"};
     addplatform=new JComboBox(comb);
-    buton=new JButton("Add");
     
     
+    
+    buton=new JButton("Add"); 
     buton.addActionListener(new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -102,6 +103,9 @@ public class GUI extends JFrame {
     menubar=new JPanel();
     platformname=new JLabel("Platform:");
     String[] platform={"PC","PS2","PS3","PS4"};
+    
+    
+    
     platformbox=new JComboBox(platform);
     platformbox.addActionListener(new ActionListener(){
         @Override
@@ -110,7 +114,11 @@ public class GUI extends JFrame {
         }
         
     });
+    
+    
     finishlabel=new JLabel("Finished?");
+    
+    
     finishbox=new JCheckBox();
     finishbox.addActionListener(new ActionListener(){
         @Override
@@ -120,6 +128,8 @@ public class GUI extends JFrame {
         
     });
     mainpanel=new JPanel();
+    
+    
     table=new JTable();
     table.setModel(new javax.swing.table.DefaultTableModel(
             new Object[][]{
@@ -128,10 +138,15 @@ public class GUI extends JFrame {
             
     
     ));
+    
+    
+    
     container.setLayout(new BoxLayout(container,BoxLayout.Y_AXIS));
     add(container);
     
     
+    
+    //add games to the database(components)
     menubar.setLayout(new FlowLayout());
     menubar.add(platformname);
     menubar.add(platformbox);
@@ -168,10 +183,6 @@ public class GUI extends JFrame {
         
     }
      
-     
-     public void makeStatement() throws SQLException{
-          
-     }
     
     public static void main(String[] args) throws SQLException, Exception{
         GUI g=new GUI();
